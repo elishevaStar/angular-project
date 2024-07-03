@@ -1,0 +1,12 @@
+<div class="home-container">
+    <h1>Home</h1>
+    <p>Hi, this is a website that will help you manage students.</p>
+    <p>You can add, update, or delete a student as well as view the students' absences.</p>
+    
+    <div class="direction-buttons">
+      <h4>הכיוון הנוכחי: {{ currentDirection }}</h4>
+      <button class="btn btn-primary" (click)="setDirection('ltr')">אנגלית</button>
+      <button class="btn btn-secondary" (click)="setDirection('rtl')">עברית</button>
+    </div>
+  </div>
+  

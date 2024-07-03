@@ -1,0 +1,21 @@
+p[appHightLight] {
+    display: inline-block;
+    padding: 5px;
+    margin: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+.directive-demo {
+    text-align: center;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  
+    p {
+      margin-top: 10px;
+    }
+  }
+  
+  

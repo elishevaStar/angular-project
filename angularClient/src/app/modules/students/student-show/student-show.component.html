@@ -1,0 +1,24 @@
+<div class="card" *ngIf="student">
+    <div class="card-body" *ngIf="student.active; else noStudentTemplate">
+      <h1 class="card-title">Student Details</h1>
+      <div>
+        <p><strong>First Name:</strong> {{ student.firstName }}</p>
+        <p><strong>Last Name:</strong> {{ student.lastName }}</p>
+        <p><strong>Address:</strong> {{ student.address }}</p>
+        <p><strong>Phone:</strong> {{ student.phone }}</p>
+        <p><strong>Active:</strong> {{ student.active }}</p>
+        <p><strong>Average Mark:</strong> {{ student.avgMark }}</p>
+        <p><strong>Year:</strong> {{ student.year }}</p>
+        <p><strong>Course:</strong> {{ student.courseId }}</p>
+      </div>
+    </div>
+  </div>
+  
+  <ng-template #noStudentTemplate>
+    <div class="card">
+      <div class="card-body">
+        No Student To Display
+      </div>
+    </div>
+  </ng-template>
+  

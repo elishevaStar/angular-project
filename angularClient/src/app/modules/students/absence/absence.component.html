@@ -1,0 +1,14 @@
+<div class="absence-container">
+    <h1>Students Absences</h1>
+    <div class="student-absences" *ngFor="let student of studentsWithAbsences">
+      <h3 class="student-name">{{ student.name }}</h3>
+      <ul class="absence-list" *ngIf="student.absences">
+        <li class="absence-item" *ngFor="let absence of student.absences">
+          <span class="absence-date">{{ absence.missingFromDate | date }}</span> 
+          <span class="absence-days">{{ absence.missingDays }} days</span>
+        </li>
+      </ul>
+      <p class="no-absences" *ngIf="!student.absences">No absences recorded!</p>
+    </div>
+  </div>
+  

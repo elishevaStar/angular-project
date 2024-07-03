@@ -1,0 +1,99 @@
+<div class="card bg-light" *ngIf="student; else noStudent">
+  <div class="card-body">
+    <h5 class="card-title">Student Details</h5>
+    <form [formGroup]="studentForm">
+      <div class="mb-3">
+        <ng-container *ngIf="student.active">
+          <div class="form-group">
+            <label for="firstName" class="form-label">First Name:</label>
+            <input type="text" class="form-control form-control-sm" id="firstName" formControlName="firstName">
+            <div class="alert alert-danger" *ngIf="studentForm.get('firstName')?.errors && studentForm.get('firstName')?.touched">
+              <div *ngIf="studentForm.get('firstName')?.errors?.['required']">First Name is required</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="lastName" class="form-label">Last Name:</label>
+            <input type="text" class="form-control form-control-sm" id="lastName" formControlName="lastName">
+            <div class="alert alert-danger" *ngIf="studentForm.get('lastName')?.errors && studentForm.get('lastName')?.touched">
+              <div *ngIf="studentForm.get('lastName')?.errors?.['required']">Last Name is required</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="address" class="form-label">Address:</label>
+            <input type="text" class="form-control form-control-sm" id="address" formControlName="address">
+            <div class="alert alert-danger" *ngIf="studentForm.get('address')?.errors && studentForm.get('address')?.touched">
+              <div *ngIf="studentForm.get('address')?.errors?.['required']">Address is required</div>
+              <div *ngIf="studentForm.get('address')?.errors?.['minlength']">Address must be at least 3 characters</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="phone" class="form-label">Phone:</label>
+            <input type="text" class="form-control form-control-sm" id="phone" formControlName="phone">
+            <div class="alert alert-danger" *ngIf="studentForm.get('phone')?.errors && studentForm.get('phone')?.touched">
+              <div *ngIf="studentForm.get('phone')?.errors?.['required']">Phone is required</div>
+              <div *ngIf="studentForm.get('phone')?.errors?.['minlength'] || studentForm.get('phone')?.errors?.['maxlength']">Phone must be 9-10 characters</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="avgMark" class="form-label">Average Mark:</label>
+            <input type="text" class="form-control form-control-sm" id="avgMark" formControlName="avgMark">
+            <div class="alert alert-danger" *ngIf="studentForm.get('avgMark')?.errors && studentForm.get('avgMark')?.touched">
+              <div *ngIf="studentForm.get('avgMark')?.errors?.['required']">Average Mark is required</div>
+              <div *ngIf="studentForm.get('avgMark')?.errors?.['max']">Average Mark must be less than or equal to 100</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Course:</label>
+            <select class="form-control form-control-sm" formControlName="courseId">
+              <option *ngFor="let course of courseList" [value]="course.id">{{ course.subject }}</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Year of Study:</label>
+            <div>
+              <label><input type="radio" [value]="year.FirstYear" formControlName="year"> First Year</label><br>
+              <label><input type="radio" [value]="year.SecondYear" formControlName="year"> Second Year</label><br>
+              <label><input type="radio" [value]="year.ThirdYear" formControlName="year"> Third Year</label>
+            </div>
+            <div [ngSwitch]="studentForm.get('year')?.value">
+              <div *ngSwitchCase="year.FirstYear">100 days of study in the first year</div>
+              <div *ngSwitchCase="year.SecondYear">70 days of studies in the second year</div>
+              <div *ngSwitchCase="year.ThirdYear">50 school days in the third year</div>
+              <div *ngSwitchDefault>A school year has not been selected yet</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Gender:</label>
+            <div>
+              <label><input type="radio" [value]="gender.Male" formControlName="gender"> Male</label><br>
+              <label><input type="radio" [value]="gender.Female" formControlName="gender"> Female</label>
+            </div>
+          </div>
+        </ng-container>
+        <ng-container *ngIf="!student.active">
+          <div class="form-group">
+            <label for="departureDate" class="form-label">Departure Date:</label>
+            <input type="date" class="form-control form-control-sm" id="departureDate" formControlName="date">
+          </div>
+        </ng-container>
+      </div>
+      <button class="btn btn-primary" (click)="saveNewStudent()" [disabled]="!studentForm.valid">Save</button>
+    </form>
+    <div *ngIf="student.active">
+      <div class="form-group">
+        <label for="missingFromDate" class="form-label">Missing From Date:</label>
+        <input type="date" class="form-control form-control-sm" id="missingFromDate" [(ngModel)]="missingFromDate">
+      </div>
+      <div class="form-group">
+        <label for="missingDays" class="form-label">Missing Days:</label>
+        <input type="number" class="form-control form-control-sm" id="missingDays" [(ngModel)]="missingDays">
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #noStudent>
+  <div class="card">
+    No Student to Display
+  </div>
+</ng-template>

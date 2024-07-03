@@ -1,0 +1,12 @@
+<div class="login-container">
+    <h1 class="header">Login</h1>
+    <p *ngIf="!_loginService.getIsLogin()" class="info-message">
+      You are not recognized in the system, please click the login button
+    </p>
+    <p *ngIf="_loginService.getIsLogin()" class="info-message">
+      You are recognized in the system, if you want to logout click the logout button
+    </p>
+    <button class="btn btn-primary" *ngIf="!_loginService.getIsLogin()" (click)="login()">Login</button>
+    <button class="btn btn-primary" *ngIf="_loginService.getIsLogin()" (click)="logout()">Logout</button>
+  </div>
+  

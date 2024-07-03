@@ -1,0 +1,12 @@
+<div class="observable-demo">
+  <h2>Observable Demo</h2>
+  <b>{{ timerValue }}</b>
+  <br>
+  <br>
+  <b>All Students</b>
+  <p>{{ name }}</p>
+  <button class="btn btn-primary" (click)="sendEmailsToActiveStudents()">שלח מייל לסטודנטים פעילים</button>
+  <div *ngFor="let log of emailMessages">
+    <p>{{ log }}</p>
+  </div>
+</div>
