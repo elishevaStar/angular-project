@@ -26,6 +26,9 @@
 ![צילום מסך 2024-06-27 135927](https://github.com/elishevaStar/angular-project/assets/144705468/8b1ca374-3a09-4013-80b5-1d14849dc6f6)
 
 הרשמה ללא הרשמה לא ניתן להכנס להגדרות
+![צילום מסך 2024-06-27 140000](https://github.com/elishevaStar/angular-project/assets/144705468/11ce6da7-8863-4817-8fbd-1bc5848d5325)
+
+
 
 
 
